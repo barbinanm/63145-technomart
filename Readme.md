@@ -1,6 +1,7 @@
 # Личный проект «Техномарт»
 
 * Студент: [Надежда Барбина](https://up.htmlacademy.ru/htmlcss/16/user/63145).
+* Наставник: [Катерина Шелег](https://github.com/katesheleh).
 
 ---
 
