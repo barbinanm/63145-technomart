@@ -1,136 +1,65 @@
-var feedbackPopup = document.querySelector(".feedback");
-var feedbackButton = document.querySelector(".company-feedback-btn");
-var feedbackClose = document.querySelector(".feedback-close");
-var feedbackCancel = document.querySelector(".feedback-cancel");
+var link = document.querySelector(".btn-feedback");
+var popup = document.querySelector(".write-us");
+var close = document.querySelector(".write-us-close");
+var fullname = document.querySelector("[name=fullname]");
 
-if (feedbackButton != null && feedbackClose != null && feedbackCancel != null) {
-    feedbackButton.addEventListener("click", function (event) {
-        event.preventDefault(event);
-        feedbackPopup.classList.add("show-block");
-    });
+var openmap = document.querySelector(".open-map");
+var map = document.querySelector(".modal-map");
+var closemap = document.querySelector(".modal-map-close");
 
-    feedbackClose.addEventListener("click", function (event) {
-        event.preventDefault(event);
-        feedbackPopup.classList.remove("show-block");
-    });
+var buy = document.querySelectorAll(".buy");
+var cart = document.querySelector(".cart");
+var closecart = document.querySelector(".cart-close");
 
-    feedbackCancel.addEventListener("click", function (event) {
-        event.preventDefault(event);
-        feedbackPopup.classList.remove("show-block");
-    });
-
-    window.addEventListener("keydown", function (event) {
-        if (event.keyCode == 27) {
-            if (feedbackPopup.classList.contains("show-block")) {
-                feedbackPopup.classList.remove("show-block");
-            }
-        }
-    });
+if (link) {
+	link.addEventListener("click", function(event) {
+		event.preventDefault();
+		popup.classList.add("write-us-show");
+		fullname.focus();
+	});
 }
 
-var buyItemButtons = document.querySelectorAll(".catalog-item-buy"), i;
-var cartBlock = document.querySelector(".cart-notification");
-var cartClose = document.querySelector(".cart-notification-close");
-var cartCancel = document.querySelector(".cart-cancel-btn");
-
-for (i = 0; i < buyItemButtons.length; ++i) {
-	buyItemButtons[i].addEventListener("click", function (event) {
-		event.preventDefault(event);
-		cartBlock.classList.add("show-block");
-	})
+if (close) {
+	close.addEventListener("click", function(event) {
+		event.preventDefault();
+		popup.classList.remove("write-us-show");
+	});
 }
 
-cartClose.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	cartBlock.classList.remove("show-block");
-});
-
-cartCancel.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	cartBlock.classList.remove("show-block");
-});
-
-window.addEventListener("keydown", function (event) {
-    if (event.keyCode == 27) {
-        if (cartBlock.classList.contains("show-block")) {
-            cartBlock.classList.remove("show-block");
-        }
-    }
-});
-
-
-var serviceLinks = document.querySelectorAll(".service-list-column a");
-var serviceBlocks = document.querySelectorAll(".service-details-block");
-var j, h, k;
-
-for (i = 0; i < serviceLinks.length; ++i) {
-	serviceLinks[i].addEventListener("click", function (event) {
-		event.preventDefault(event);
-        for (j = 0; j < serviceLinks.length; ++j) {
-            serviceLinks[j].classList.remove("service-list-active");        
-        }
-        for (h = 0; h < serviceLinks.length; ++h) {
-            if (serviceLinks[h] == this) {
-                serviceLinks[h].classList.add("service-list-active");
-                for (k = 0; k < serviceBlocks.length; ++k) {
-                    serviceBlocks[k].classList.remove("service-details-active");
-                }
-                serviceBlocks[h].classList.add("service-details-active");
-            }
-        }
-	})
+if (buy) {
+	for (var i = 0; i < buy.length; i++) {
+		buy[i].addEventListener("click", function(event) {
+			event.preventDefault();
+			cart.classList.add("cart-show");
+		});
+	}
 }
 
-
-
-var mapLink = document.querySelector(".company-map");
-var mapPopup = document.querySelector(".map");
-var mapClose = document.querySelector(".map-close");
-
-mapLink.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	mapPopup.classList.add("show-block");
-});
-
-mapClose.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	mapPopup.classList.remove("show-block");
-});
-
-window.addEventListener("keydown", function (event) {
-    if (event.keyCode == 27) {
-        if (mapPopup.classList.contains("show-block")) {
-            mapPopup.classList.remove("show-block");
-        }
-    }
-});
-
-var buyItemButtons = document.querySelectorAll(".catalog-item-buy"), i;
-var cartBlock = document.querySelector(".cart-notification");
-var cartClose = document.querySelector(".cart-notification-close");
-var cartCancel = document.querySelector(".cart-cancel-btn");
-
-for (i = 0; i < buyItemButtons.length; ++i) {
-	buyItemButtons[i].addEventListener("click", function (event) {
-		event.preventDefault(event);
-		cartBlock.classList.add("show-block");
-	})
+if (closecart) {
+	closecart.addEventListener("click", function(event) {
+		event.preventDefault();
+		cart.classList.remove("cart-show");
+	});
 }
 
-cartClose.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	cartBlock.classList.remove("show-block");
-});
+if (openmap) {
+	openmap.addEventListener("click", function(event) {
+		event.preventDefault();
+		map.classList.add("modal-map-show");
+	});
+}
 
-cartCancel.addEventListener("click", function (event) {
-	event.preventDefault(event);
-	cartBlock.classList.remove("show-block");
-});
+if (closemap) {
+	closemap.addEventListener("click", function(event) {
+		event.preventDefault();
+		map.classList.remove("modal-map-show");
+	});
+}
 
-window.addEventListener("keydown", function (event) {
-    if (event.keyCode == 27) {
-        if (cartBlock.classList.contains("show-block")) {
-            cartBlock.classList.remove("show-block");
-        }
-    }
+window.addEventListener("keydown", function(event) {
+	if (event.keyCode === 27) {
+		if (map.classList.contains("modal-map-show")) {
+			map.classList.remove("modal-map-show");
+		}
+	}	
 });
